@@ -1,0 +1,32 @@
+{% extends "object_list.html" %}
+
+{% load humanize %}
+
+{% block title %}Transfer Transaction List{% endblock %}
+
+{% block content_title %}Transfer Transaction List{% endblock %}
+
+{% block create_new %}{% url 'app_transfers:create' %}{% endblock %}
+
+{% block table_headers %}
+<th>Transaction Reference</th>
+<th>Transaction Date</th>
+<th>From Puppy Account</th>
+<th>To Puppy Account</th>
+<th>Transfer Amount</th>
+<th>Currency</th>
+{% endblock %}
+
+{% block table_body %}
+{% for transfer_transaction in object_list %}
+<tr>
+    <td><a href="{% url 'app_transfers:view' transfer_transaction.id %}">
+        {{ transfer_transaction.transaction_reference}}</a></td>
+    <td>{{ transfer_transaction.transaction_date }}</td>
+    <td>{{ transfer_transaction.from_puppy }}</td>
+    <td>{{ transfer_transaction.to_puppy }}</td>
+    <td>{{ transfer_transaction.transfer_amount|intcomma }}</td>
+    <td>{{ transfer_transaction.currency }}</td>
+</tr>
+{% endfor %}
+{% endblock %}

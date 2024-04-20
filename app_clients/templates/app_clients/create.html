@@ -1,0 +1,13 @@
+{% extends "object_form.html" %}
+
+{% load static %}
+
+{% block title %}Create Puppy Account{% endblock %}
+
+{% block content_title %}Create Puppy Account{% endblock %}
+
+{% block img_class %}{% static 'img/puppy-puppy.jpg' %}{% endblock %}
+
+{% block form_action %}{% url 'app_clients:create' %}{% endblock %}
+
+{% block obj_list_url %}{% url 'app_clients:list' %}{% endblock %}

@@ -1,0 +1,37 @@
+{% extends "object_list.html" %}
+
+{% load humanize %}
+
+{% block title %}Deposit Transaction List{% endblock %}
+
+{% block content_title %}Deposit Transaction List{% endblock %}
+
+{%block table_title %}Deposits{% endblock %}
+
+{% block create_new %}{% url 'app_deposits:create' %}{% endblock %}
+
+{%block table_headers %}
+<th>Transaction Reference:</div>
+</th>
+<th>Transaction Date</th>
+<th>Puppy Name</th>
+<th>Deposit Amount</th>
+<th>Start Balance</th>
+<th>New Balance</th>
+<th>Currency</th>
+{% endblock %}
+
+{%block table_body %}
+{% for deposit_transaction in object_list %}
+<tr>
+    <td><a href="{% url 'app_deposits:view' deposit_transaction.id %}">
+            {{ deposit_transaction.transaction_reference }}</a></td>
+    <td>{{ deposit_transaction.transaction_date }}</td>
+    <td>{{ deposit_transaction.puppy }}</td>
+    <td>{{ deposit_transaction.deposit_amount|intcomma }}</td>
+    <td>{{ deposit_transaction.start_balance|intcomma }}</td>
+    <td>{{ deposit_transaction.new_balance|intcomma }}</td>
+    <td>{{ deposit_transaction.currency }}</td>
+</tr>
+{% endfor %}
+{% endblock %}

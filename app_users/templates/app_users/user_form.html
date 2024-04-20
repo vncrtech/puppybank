@@ -1,0 +1,110 @@
+{% extends "base_template.html" %}
+
+{% load static %}
+
+{% block title %}Create System User{% endblock %}
+
+{% block content_title %}Create System User{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-xl-12 col-lg-7">
+        <div class="card shadow mb-4">
+            <div class="card-body p-0">
+                <!-- Nested Row within Card Body -->
+                <div class="row">
+                    <!-- <div class="col-lg-4 d-lg-block"> -->
+                    <img class="col-lg-4 d-lg-block" src="{% static 'img/user-puppy.jpg' %}"></img>
+                    <!-- </div> -->
+                    <div class="col-lg-8">
+                        <div class="p-4">
+                            <div class="text-center">
+                                <form class="user" action="{% url 'app_users:create' %}" method="post">
+                                    {% csrf_token %}
+                                    <fieldset {{ disabled }}>
+                                        <div class="form-group text-left">
+                                            <label class="required">Username:</label>
+                                            {{ form.username }}
+                                            <div style="color:red">{{ form.username.errors }}</div>
+                                            <div class="help small">Required. 150 characters or fewer. Letters, digits
+                                                and @/./+/-/_ only.</div>
+                                        </div>
+                                        <div class="form-group text-left">
+                                            <label class="required">Password:</label>
+                                            {{ form.password1 }}
+                                            <div style="color:red">{{ form.password1.errors }}</div>
+                                            <div class="help small">
+                                                <ul>
+                                                    <li>Your password can’t be too similar to your other personal
+                                                        information.</li>
+                                                    <li>Your password must contain at least 8 characters.</li>
+                                                    <li>Your password can’t be a commonly used password.</li>
+                                                    <li>Your password can’t be entirely numeric.</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="form-group text-left">
+                                            <label class="required">Repeat password:</label>
+                                            {{ form.password2 }}
+                                            <div style="color:red">{{ form.password2.errors }}</div>
+                                            <div class="help small">Enter the same password as before, for verification.
+                                            </div>
+                                        </div>
+                                        <hr>
+                                    </fieldset>
+                                    <div class="text-left">
+                                        <button {{ confirm_hidden }} type="submit"
+                                            class="btn btn-primary btn-icon-split">
+                                            <span class="icon text-white-50">
+                                                <i class="fas fa-check"></i>
+                                            </span>
+                                            <span class="text">Confirm</span>
+                                        </button>
+                                        <div {{ delete_hidden }} class="btn btn-danger btn-icon-split"
+                                            data-toggle="modal" data-target="#deleteModal">
+                                            <span class="icon text-white-50">
+                                                <i class="fas fa-trash"></i>
+                                            </span>
+                                            <span class="text">Delete</span>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <a rel="nofollow" href="{% url 'app_users:list' %}">Back to list &rarr;</a>
+                                    </div>
+                                </form>
+                                <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog"
+                                    aria-labelledby="exampleModalLabel" aria-hidden="false">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Delete Confirmation</h5>
+                                                <button class="close" type="button" data-dismiss="modal"
+                                                    aria-label="Close">
+                                                    <span aria-hidden="true">×</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">Are you sure you want to delete?
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button class="btn btn-secondary" type="button" data-dismiss="modal">No,
+                                                    take me back</button>
+                                                <form action="{% block delete_url %}{% endblock %}" method="post">
+                                                    {% csrf_token %}
+                                                    <button type="submit" class="btn btn-primary btn-danger"
+                                                        name="delete_object">Yes, I'm
+                                                        sure</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

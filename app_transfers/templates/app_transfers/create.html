@@ -1,0 +1,25 @@
+{% extends "object_form.html" %}
+
+{% load static %}
+
+{% block title %}Transfer Transaction{% endblock %}
+
+{% block content_title %}Transfer Transaction{% endblock %}
+
+{% block img_class %}{% static 'img/transfer-puppy.jpg' %}{% endblock %}
+
+{% block form_action %}{% url 'app_transfers:create' %}{% endblock %}
+
+{% block obj_list_url %}{% url 'app_transfers:list' %}{% endblock %}
+
+{% block warning %}
+<div {{ warning }}><a class="btn btn-warning btn-circle">
+        <i class="fas fa-exclamation-triangle"></i>
+    </a>
+    <a class="btn btn-warning btn-icon-split text-center">
+
+        <span class="text">{{ warning_message }}</span>
+    </a>
+    <hr>
+</div>
+{% endblock %}

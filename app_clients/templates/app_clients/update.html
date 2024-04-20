@@ -1,0 +1,17 @@
+{% extends "object_form.html" %}
+
+{% load static %}
+
+{% block title %}Update Puppy{% endblock %}
+
+{% block content_title %}Update Puppy{% endblock %}
+
+{% block obj_details_title %}Puppy{% endblock %}
+
+{%block obj_self_url %}{% url 'app_clients:update' id %}{% endblock %}
+
+{% block img_class %}{% static 'img/puppy-puppy.jpg' %}{% endblock %}
+
+{%block obj_list_url%}{% url 'app_clients:list' %}{% endblock %}
+
+{% block delete_url %}{% url 'app_clients:delete' id %}{% endblock %}

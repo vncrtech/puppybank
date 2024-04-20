@@ -1,0 +1,25 @@
+{% extends "object_form.html" %}
+
+{% load static %}
+
+{% block title %}Deposit Transaction{% endblock %}
+
+{% block content_title %}Deposit Transaction{% endblock %}
+
+{% block img_class %}{% static 'img/deposit-puppy.jpg' %}{% endblock %}
+
+{% block form_action %}{% url 'app_deposits:create' %}{% endblock %}
+
+{% block obj_list_url %}{% url 'app_deposits:list' %}{% endblock %}
+
+{% block warning %}
+<div {{ warning }}><a class="btn btn-warning btn-circle">
+        <i class="fas fa-exclamation-triangle"></i>
+    </a>
+    <a class="btn btn-warning btn-icon-split text-center">
+
+        <span class="text">{{ warning_message }}</span>
+    </a>
+    <hr>
+</div>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends "object_form.html" %}
+
+{% load static %}
+
+{% block title %}Withdraw Transaction{% endblock %}
+
+{% block content_title %}Withdraw Transaction{% endblock %}
+
+{% block img_class %}{% static 'img/withdraw-puppy.jpg' %}{% endblock %}
+
+{% block form_action %}{% url 'app_withdrawals:create'%}{% endblock %}
+
+{% block obj_list_url %}{% url 'app_withdrawals:list'%}{% endblock %}
+
+{% block warning %}
+<div {{ warning }}><a class="btn btn-warning btn-circle">
+        <i class="fas fa-exclamation-triangle"></i>
+    </a>
+    <a class="btn btn-warning btn-icon-split text-center">
+
+        <span class="text">{{ warning_message }}</span>
+    </a>
+    <hr>
+</div>
+{% endblock %}

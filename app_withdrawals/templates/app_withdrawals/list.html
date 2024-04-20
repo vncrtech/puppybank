@@ -1,0 +1,34 @@
+{% extends "object_list.html" %}
+
+{% load humanize %}
+
+{% block title %}Withdraw Transaction List{% endblock %}
+
+{% block content_title %}Withdraw Transaction List{% endblock %}
+
+{% block create_new %}{% url 'app_withdrawals:create' %}{% endblock %}
+
+{% block table_headers %}
+<th>Transaction Reference</th>
+<th>Transaction Date</th>
+<th>Puppy Name</th>
+<th>Withdraw Amount</th>
+<th>Start Balance</th>
+<th>New Balance</th>
+<th>Currency</th>
+{% endblock %}
+
+{% block table_body %}
+{% for withdraw_transaction in object_list %}
+<tr>
+    <td><a href="{% url 'app_withdrawals:view' withdraw_transaction.id %}">
+            {{ withdraw_transaction.transaction_reference }}</a></td>
+    <td>{{ withdraw_transaction.transaction_date }}</td>
+    <td>{{ withdraw_transaction.puppy }}</td>
+    <td>{{ withdraw_transaction.withdraw_amount|intcomma }}</td>
+    <td>{{ withdraw_transaction.start_balance|intcomma }}</td>
+    <td>{{ withdraw_transaction.new_balance|intcomma }}</td>
+    <td>{{ withdraw_transaction.currency }}</td>
+</tr>
+{% endfor %}
+{% endblock %}

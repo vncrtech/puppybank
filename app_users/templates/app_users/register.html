@@ -1,0 +1,66 @@
+{% extends "base_template_outside.html" %}
+
+{% load static %}
+
+{% block title %}Register User{% endblock %}
+
+{% block content %}
+<div class="card o-hidden border-0 shadow-lg my-5">
+    <div class="card-body p-0">
+        <!-- Nested Row within Card Body -->
+        <div class="row">
+            <img class="col-lg-6 d-none d-lg-block" src="{% static 'img/user-puppy.jpg' %}">
+            <div class="col-lg-6">
+                <div class="p-5">
+                    <div class="text-center">
+                        <h1 class="h4 text-gray-900 mb-4">Create a User!</h1>
+                    </div>
+                    <form class="user" action="{% url 'app_users:register' %}" method="post">
+                        {% csrf_token %}
+                        <fieldset {{ disabled }}>
+                            <div class="form-group text-left">
+                                <label class="required">Username:</label>
+                                {{ form.username }}
+                                <div style="color:red">{{ form.username.errors }}</div>
+                                <div class="help small">Required. 150 characters or fewer. Letters, digits
+                                    and @/./+/-/_ only.</div>
+                            </div>
+                            <div class="form-group text-left">
+                                <label class="required">Password:</label>
+                                {{ form.password1 }}
+                                <div style="color:red">{{ form.password1.errors }}</div>
+                                <div class="help small">
+                                    <ul>
+                                        <li>Your password can’t be too similar to your other personal
+                                            information.</li>
+                                        <li>Your password must contain at least 8 characters.</li>
+                                        <li>Your password can’t be a commonly used password.</li>
+                                        <li>Your password can’t be entirely numeric.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="form-group text-left">
+                                <label class="required">Repeat password:</label>
+                                {{ form.password2 }}
+                                <div style="color:red">{{ form.password2.errors }}</div>
+                                <div class="help small">Enter the same password as before, for verification.
+                                </div>
+                            </div>
+                            <hr>
+                        </fieldset>
+                        <button type="submit" class="btn btn-primary btn-user btn-block">
+                            Register User
+                        </button>
+                    </form>
+                    <hr>
+                    <div class="text-center">
+                        <a class="small" href="{% url 'app_generic:login' %}">Already have an account?
+                            Login!</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

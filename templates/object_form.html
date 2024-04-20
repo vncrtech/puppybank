@@ -1,0 +1,85 @@
+{% extends "base_template.html" %}
+
+{% block content %}
+<div class="row">
+    <div class="col-xl-12 col-lg-7">
+        <div class="card shadow mb-4">
+            <div class="card-body p-0">
+                <!-- Nested Row within Card Body -->
+                <div class="row">
+                    <img class="col-lg-4 d-lg-block" src="{% block img_class %}{% endblock %}">
+                    <div class="col-lg-8">
+                        <div class="p-4">
+                            <div class="text-left">
+                                {% block warning %}{% endblock %}
+                                <form class="user" action="{% block form_action %}{% endblock %}" method="post">
+                                    {% csrf_token %}
+                                    <fieldset {{disabled }}>
+                                        {% for item in form %}
+                                        <div class="form-group text-left">
+                                            <label class="required">{{ item.label }}:</label>
+                                            {{ item }}
+                                            <div style="color:red">{{ item.errors }}</div>
+                                            {% block help_text %}
+                                            <div class="help small">{{ item.help_text }}</div>
+                                            {% endblock %}
+                                        </div>
+                                        {% endfor %}
+                                    </fieldset>
+                                    <div class="text-left">
+                                        <button {{ confirm_hidden }} type="submit"
+                                            class="btn btn-primary btn-icon-split">
+                                            <span class="icon text-white-50">
+                                                <i class="fas fa-check"></i>
+                                            </span>
+                                            <span class="text">Confirm</span>
+                                        </button>
+                                        <div {{ delete_hidden }} class="btn btn-danger btn-icon-split"
+                                            data-toggle="modal" data-target="#deleteModal">
+                                            <span class="icon text-white-50">
+                                                <i class="fas fa-trash"></i>
+                                            </span>
+                                            <span class="text">Delete</span>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <a rel="nofollow" href="{% block obj_list_url %}{% endblock %}">Back to list
+                                            &rarr;</a>
+                                    </div>
+                                </form>
+                                <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog"
+                                    aria-labelledby="exampleModalLabel" aria-hidden="false">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Delete Confirmation</h5>
+                                                <button class="close" type="button" data-dismiss="modal"
+                                                    aria-label="Close">
+                                                    <span aria-hidden="true">×</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">Are you sure you want to delete?
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button class="btn btn-secondary" type="button" data-dismiss="modal">No,
+                                                    take me back</button>
+                                                <form action="{% block delete_url %}{% endblock %}" method="post">
+                                                    {% csrf_token %}
+                                                    <button type="submit" class="btn btn-primary btn-danger"
+                                                        name="delete_object">Yes, I'm
+                                                        sure</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

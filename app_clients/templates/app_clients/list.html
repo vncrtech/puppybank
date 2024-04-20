@@ -1,0 +1,28 @@
+{% extends "object_list.html" %}
+
+{% block title %}Puppy Account List{% endblock %}
+
+{% block content_title %}Puppy Account List{% endblock %}
+
+{%block table_title %}Puppies{% endblock %}
+
+{% block create_new %}{% url 'app_clients:create' %}{% endblock %}
+
+{%block table_headers%}
+<th>First Name:</th>
+<th>Last Name:</th>
+<th>Account Number:</th>
+<th>Email Address:</th>
+<th>Balance:</th>
+{% endblock %}
+{%block table_body %}
+{% for obj in object_list %}
+<tr>
+    <td><a href="{% url 'app_clients:update' obj.id %}">{{ obj.first_name }}</a></td>
+    <td>{{ obj.last_name }}</td>
+    <td>{{ obj.account_number }}</td>
+    <td>{{ obj.email_address }}</td>
+    <td>{{ obj.account_balance }}</td>
+</tr>
+{% endfor %}
+{% endblock %}

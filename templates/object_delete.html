@@ -1,0 +1,18 @@
+{% extends "base_template.html" %}
+
+{% block content %}
+<h1>Delete Confirmation</h1>
+<p>Are you sure you want to delete "{{ obj_client }}"? </p>
+<form action="{% block delete_url %}{% endblock %}" method="post">
+    {% csrf_token %}
+    <div>
+        <button class="btn btn-danger btn-icon-split">
+            <span class="text">Yes, I’m sure</span>
+        </button>
+        <a href="{% block update_url %}{% endblock %}" class="btn btn-secondary btn-icon-split">
+
+            <span class="text">No, take me back</span>
+        </a>
+    </div>
+</form>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "object_list.html" %}
+
+{% block title %}System User List{% endblock %}
+
+{% block content_title %}System User List{% endblock %}
+
+{%block table_title %}System Users{% endblock %}
+
+{% block create_new %}{% url 'app_users:create' %}{% endblock %}
+
+{% block table_headers %}
+<th>Username:</th>
+<th>Date Joined:</th>
+{% endblock %}
+
+{% block table_body %}
+{% for user in object_list %}
+<tr>
+    <td><a href="{% url 'app_users:update' user.id %}">{{ user.username }}</a></td>
+    <td>{{ user.date_joined }}</td>
+</tr>
+{% endfor %}
+{% endblock %}

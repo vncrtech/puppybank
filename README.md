@@ -20,12 +20,14 @@ That’s it. Puppy Bank is now accessible on your machine by going to ```http://
 
 The default credentials are admin/password.
 
-**Docker:** https://hub.docker.com/r/vncrtech/puppybank
-
 **Note: Next time you want to bring up the application, there is no need to rerun the previous command, just go to Docker Desktop then Containers. Press the start button for Puppy Bank and it should be accessible again on localhost.*
 
 You now have access to a web application specifically created for practicing test automation.
 
-If you find this web application useful, you can show your support by clapping on this article on [Medium](https://vncrtech.medium.com/practice-test-automation-using-a-local-web-application-f8310ca37637) and sharing it with a friend. If you have a GitHub account, you can also give a star to this repository. I would greatly appreciate it. Thank you!
+If you find this web application useful, you can show your support by clapping on this article on [Medium](https://vncrtech.medium.com/practice-test-automation-using-a-local-web-application-f8310ca37637) and sharing it with a friend. If you have a GitHub and/or Docker Hub account, you can also give a star to the repository. I would greatly appreciate it. Thank you!
+
+**Docker:** https://hub.docker.com/r/vncrtech/puppybank
+
+**Source Code:** https://github.com/vncrtech/puppybank
 
 Enjoy learning new technologies and happy testing!

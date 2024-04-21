@@ -7,7 +7,7 @@ Introducing **Puppy Bank**.
 
 **Puppy Bank** is an imaginary bank for puppies. It is a web application where puppies can process deposits, withdrawals, and transfers.
 
-![Puppy Bank Tour](static\img\puppybank.gif)
+![Puppy Bank Tour](https://github.com/vncrtech/puppybank/blob/main/static/img/puppybank.gif)
 
 Since you are looking for a web app to play with, I made it accessible for you and everyone.
 
